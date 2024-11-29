@@ -1,0 +1,44 @@
+[
+  {
+    "nom": "Dupont",
+    "prenom": "Jean",
+    "age": 34,
+    "statut": "Employé"
+  },
+  {
+    "nom": "Martin",
+    "prenom": "Sophie",
+    "age": 28,
+    "statut": "Étudiant"
+  },
+  {
+    "nom": "Durand",
+    "prenom": "Paul",
+    "age": 45,
+    "statut": "Entrepreneur"
+  },
+  {
+    "nom": "Lemoine",
+    "prenom": "Claire",
+    "age": 32,
+    "statut": "Professeur"
+  },
+  {
+    "nom": "Nguyen",
+    "prenom": "Thierry",
+    "age": 51,
+    "statut": "Retraité"
+  },
+  {
+    "nom": "Moreau",
+    "prenom": "Isabelle",
+    "age": 24,
+    "statut": "Artiste"
+  },
+  {
+    "nom": "Petit",
+    "prenom": "Lucas",
+    "age": 19,
+    "statut": "Étudiant"
+  }
+]
