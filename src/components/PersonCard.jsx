@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 export default function PersonCard({ person, target }) {
     // Fonction pour déterminer la couleur en fonction des critères
@@ -13,7 +14,13 @@ export default function PersonCard({ person, target }) {
     }
 
     return (
-        <div style={{ border: "1px solid black", margin: "10px", padding: "10px" }}>
+        <div
+            style={{
+                border: "1px solid black",
+                margin: "10px",
+                padding: "10px",
+            }}
+        >
             <p style={{ color: getColor("nom", person.nom) }}>
                 Nom: {person.nom}
             </p>
@@ -28,4 +35,14 @@ export default function PersonCard({ person, target }) {
             </p>
         </div>
     );
+}
+
+PersonCard.propTypes = {
+    person: PropTypes.shape({
+        nom: PropTypes.string,
+        prenom: PropTypes.string,
+        age: PropTypes.string,
+        statut: PropTypes.string,
+    }).isRequired,
+    target: PropTypes.string.isRequired,
 };

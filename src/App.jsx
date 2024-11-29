@@ -13,17 +13,16 @@ export default function App() {
         const randomPerson = data[Math.floor(Math.random() * data.length)];
         setTargetPerson(randomPerson);
     }, []);
-    console.log(targetPerson)
 
     const handleInputChange = (e) => {
-        const value = e.target.value;
+        const { value } = e.target;
         setInput(value);
 
         // Filtrer les suggestions en fonction de l'entrée
         const filteredSuggestions = data.filter(
             (person) =>
                 person.nom.toLowerCase().includes(value.toLowerCase()) ||
-                person.prenom.toLowerCase().includes(value.toLowerCase())
+                person.prenom.toLowerCase().includes(value.toLowerCase()),
         );
         setSuggestions(filteredSuggestions);
     };
@@ -35,7 +34,10 @@ export default function App() {
         setSuggestions([]);
 
         // Vérifier si c'est la bonne personne
-        if (person.nom === targetPerson.nom && person.prenom === targetPerson.prenom) {
+        if (
+            person.nom === targetPerson.nom &&
+            person.prenom === targetPerson.prenom
+        ) {
             setGameWon(true);
         }
     };
@@ -54,7 +56,11 @@ export default function App() {
             <h1>Jeu de Devinette</h1>
             {gameWon ? (
                 <div>
-                    <h2>Bravo ! Vous avez trouvé {targetPerson.prenom} {targetPerson.nom} !</h2>
+                    <h2>
+                        Bravo ! Vous avez trouvé {targetPerson.prenom}{" "}
+                        {targetPerson.nom} !
+                    </h2>
+                    {/* eslint-disable-next-line react/button-has-type */}
                     <button onClick={handleRestart}>Rejouer</button>
                 </div>
             ) : (
@@ -68,7 +74,9 @@ export default function App() {
                     />
                     <div>
                         {suggestions.map((person, index) => (
+                            // eslint-disable-next-line jsx-a11y/click-events-have-key-events,jsx-a11y/no-static-element-interactions
                             <div
+                                // eslint-disable-next-line react/no-array-index-key
                                 key={index}
                                 onClick={() => handleSuggestionClick(person)}
                                 style={{
@@ -84,10 +92,15 @@ export default function App() {
                     </div>
                     <h3>Personnes validées :</h3>
                     {validatedPersons.map((person, index) => (
-                        <PersonCard key={index} person={person} target={targetPerson} />
+                        <PersonCard
+                            // eslint-disable-next-line react/no-array-index-key
+                            key={index}
+                            person={person}
+                            target={targetPerson}
+                        />
                     ))}
                 </>
             )}
         </div>
     );
-};
+}
