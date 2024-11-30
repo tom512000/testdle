@@ -14,7 +14,7 @@ export default function App() {
         setTargetPerson(randomPerson);
     }, []);
 
-    const handleInputChange = (e) => {
+    function handleInputChange(e) {
         const { value } = e.target;
         setInput(value);
 
@@ -30,9 +30,9 @@ export default function App() {
                     person.prenom.toLowerCase().includes(value.toLowerCase())),
         );
         setSuggestions(filteredSuggestions);
-    };
+    }
 
-    const handleSuggestionClick = (person) => {
+    function handleSuggestionClick(person) {
         // Ajouter une personne validée
         setValidatedPersons([...validatedPersons, person]);
         setInput("");
@@ -45,16 +45,16 @@ export default function App() {
         ) {
             setGameWon(true);
         }
-    };
+    }
 
-    const handleRestart = () => {
+    function handleRestart() {
         // Réinitialiser le jeu
         const randomPerson = data[Math.floor(Math.random() * data.length)];
         setTargetPerson(randomPerson);
         setValidatedPersons([]);
         setGameWon(false);
         setInput("");
-    };
+    }
 
     return (
         <div style={{ padding: "20px" }}>
@@ -65,8 +65,9 @@ export default function App() {
                         Bravo ! Vous avez trouvé {targetPerson.prenom}{" "}
                         {targetPerson.nom} !
                     </h2>
-                    {/* eslint-disable-next-line react/button-has-type */}
-                    <button onClick={handleRestart}>Rejouer</button>
+                    <button type="button" onClick={handleRestart}>
+                        Rejouer
+                    </button>
                 </div>
             ) : (
                 <>
