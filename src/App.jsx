@@ -21,8 +21,13 @@ export default function App() {
         // Filtrer les suggestions en fonction de l'entrée
         const filteredSuggestions = data.filter(
             (person) =>
-                person.nom.toLowerCase().includes(value.toLowerCase()) ||
-                person.prenom.toLowerCase().includes(value.toLowerCase()),
+                !validatedPersons.some(
+                    (validated) =>
+                        validated.nom === person.nom &&
+                        validated.prenom === person.prenom,
+                ) && // Exclure les personnes déjà validées
+                (person.nom.toLowerCase().includes(value.toLowerCase()) ||
+                    person.prenom.toLowerCase().includes(value.toLowerCase())),
         );
         setSuggestions(filteredSuggestions);
     };
