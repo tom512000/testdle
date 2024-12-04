@@ -34,7 +34,7 @@ export default function App() {
 
     function handleSuggestionClick(person) {
         // Ajouter une personne validée
-        setValidatedPersons([...validatedPersons, person]);
+        setValidatedPersons([person, ...validatedPersons]);
         setInput("");
         setSuggestions([]);
 
@@ -79,11 +79,10 @@ export default function App() {
                         style={{ padding: "10px", width: "300px" }}
                     />
                     <div>
-                        {suggestions.map((person, index) => (
-                            // eslint-disable-next-line jsx-a11y/click-events-have-key-events,jsx-a11y/no-static-element-interactions
-                            <div
-                                // eslint-disable-next-line react/no-array-index-key
-                                key={index}
+                        {suggestions.map((person) => (
+                            <button
+                                type="button"
+                                key={`${person.prenom} ${person.nom}`}
                                 onClick={() => handleSuggestionClick(person)}
                                 style={{
                                     cursor: "pointer",
@@ -93,14 +92,13 @@ export default function App() {
                                 }}
                             >
                                 {person.prenom} {person.nom}
-                            </div>
+                            </button>
                         ))}
                     </div>
                     <h3>Personnes validées :</h3>
-                    {validatedPersons.map((person, index) => (
+                    {validatedPersons.map((person) => (
                         <PersonCard
-                            // eslint-disable-next-line react/no-array-index-key
-                            key={index}
+                            key={`${person.prenom} ${person.nom}`}
                             person={person}
                             target={targetPerson}
                         />
